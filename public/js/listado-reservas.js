@@ -15,17 +15,26 @@ const mostrarReservas = (reservas, tablaElement) => {
                 <td>${reserva.codigo}</td>
                 <td>${reserva.nombre}</td>
                 <td>${reserva.apellido}</td>
-                <td>${reserva.fecha_ingreso}</td>
-                <td>${reserva.fecha_salida}</td>
+                <td>${dayjs(reserva.fecha_ingreso).format(
+                  "DD-MM-YYYY HH:mm"
+                )}</td>
+                <td>${dayjs(reserva.fecha_salida).format(
+                  "DD-MM-YYYY HH:mm"
+                )}</td>
                 <td>${reserva.habitacion}</td>
                 <td>${reserva.cantidad_personas}</td>
                 <td>${reserva.telefono}</td>
                 <td>${reserva.email}</td>
                 <td>
                <div class="row">
-               <a href="/actualizar-reserva/${reserva.id}" class="btn btn-sm btn-warning">Editar</a>
-               <button class="btn btn-danger btn-sm" data-id="${reserva.id}" onClick=eliminarReserva(event)>Eliminar</button>
+               <a href="/actualizar-reserva/${
+                 reserva.id
+               }" class="btn btn-sm btn-warning  ">Editar</a>
+               <button class="btn btn-danger btn-sm fa-solid fa-trash" data-id="${
+                 reserva.id
+               }" onClick=eliminarReserva(event)>Eliminar</button>
                </div>
+               
                 </td>
             </tr>
         `;

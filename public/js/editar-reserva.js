@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Mostrar en el formulario los datos de la reserva que se quiere actualizar
   nombre.value = data.nombre;
   apellido.value = data.apellido;
-  fecha_ingreso.value = data.fecha_ingreso;
-  fecha_salida.value = data.fecha_salida;
+  fecha_ingreso.value = dayjs(data.fecha_ingreso).format("DD-MM-YYYY HH:mm");
+  fecha_salida.value = dayjs(data.fecha_salida).format("DD-MM-YYYY HH:mm");
   habitacion.value = data.habitacion;
   cantidad_personas.value = data.cantidad_personas;
   telefono.value = data.telefono;
@@ -41,7 +41,7 @@ formReserva.addEventListener("submit", async (e) => {
   };
 
   // Se envían los nuevos datos al servidor express
-  const response = await fetch(`/api/${reservaId}`, {
+  const response = await fetch(`http://localhost:4800/api/${reservaId}`, {
     method: "PUT",
     body: JSON.stringify(reservaActualizada),
     headers: {
